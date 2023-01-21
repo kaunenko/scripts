@@ -1,4 +1,4 @@
-# Git and Github Course
+# Git and Github
 
 
 Cresh git
