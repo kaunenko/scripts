@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Varriable loge name
 LOG_FILE="access.log"
 
 echo " Top 10 ip:"
