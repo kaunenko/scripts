@@ -1,0 +1,81 @@
+# Use a non-standard port to reduce brute-force attacks
+Port 2222
+
+# Only allow the secure SSH protocol version 2
+Protocol 2
+
+# Listen on both IPv4 and IPv6
+AddressFamily any
+
+# Listen on all interfaces (0.0.0.0), or set a specific IP for restriction
+ListenAddress 0.0.0.0
+
+
+# Do not allow root to log in over SSH
+PermitRootLogin no
+
+# Disable password-based authentication; enforce key-based login
+PasswordAuthentication no
+
+# Disallow accounts with empty passwords
+PermitEmptyPasswords no
+
+# Enable SSH key authentication
+PubkeyAuthentication yes
+
+# Disable challenge-response authentication (e.g. OTP without PAM)
+ChallengeResponseAuthentication no
+
+# Enable PAM (required for 2FA, Fail2ban, etc.)
+UsePAM yes
+
+
+# Server sends keepalive every 300 seconds to check client activity
+ClientAliveInterval 300
+
+# If the client fails to respond twice (10 minutes), disconnect
+ClientAliveCountMax 2
+
+# Give clients 30 seconds to authenticate before disconnecting
+LoginGraceTime 30
+
+# Limit the number of authentication attempts per connection
+MaxAuthTries 3
+
+# Limit the number of simultaneous SSH sessions per user
+MaxSessions 2
+
+
+# Allow only specific users to connect via SSH
+AllowUsers youruser1 youruser2
+
+
+# Disable X11 GUI forwarding
+X11Forwarding no
+
+# Disable TCP port forwarding via SSH
+AllowTcpForwarding no
+
+# Disable creation of VPN-like tunnels over SSH
+PermitTunnel no
+
+# Do not allow forwarded ports to be exposed to external networks
+GatewayPorts no
+
+# Skip reverse DNS lookup for faster login and less load
+UseDNS no
+
+
+# Use only strong, modern encryption ciphers
+Ciphers aes256-ctr,aes192-ctr,aes128-ctr
+
+# Use strong MAC (Message Authentication Code) algorithms
+MACs hmac-sha2-512,hmac-sha2-256
+
+# Use secure key exchange algorithms
+KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+
+
+# Log more details including failed login attempts
+LogLevel VERBOSE
+
